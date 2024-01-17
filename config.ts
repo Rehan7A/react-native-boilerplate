@@ -1,4 +1,4 @@
 export const config = {
-  baseURL: '',
-  authorizationToken: '',
+	baseURL: "",
+	authorizationToken: "",
 };
