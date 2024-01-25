@@ -1,15 +1,21 @@
-import React from "react";
+import React, { } from "react";
 import RootStackNavigator from "@routes/RootStackNavigator";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { StyleSheet, KeyboardAvoidingView } from "react-native";
+import { StyleSheet, KeyboardAvoidingView, StatusBar, Platform, SafeAreaView } from "react-native";
+import { colors } from "@constants/colors";
+
 
 const AppEntry = () => {
+
 	return (
-		<KeyboardAvoidingView style={styles.keyboadViewStyle}>
-			<GestureHandlerRootView style={styles.gestureViewStyle}>
-				<RootStackNavigator />
-			</GestureHandlerRootView>
-		</KeyboardAvoidingView>
+		<SafeAreaView style={styles.safeAreaViewStyle}>
+			<KeyboardAvoidingView style={styles.keyboadViewStyle} behavior={Platform.OS == "ios" ? "padding" : undefined}>
+				<GestureHandlerRootView style={styles.gestureViewStyle}>
+					<StatusBar barStyle={"dark-content"} backgroundColor={colors.white} />
+					<RootStackNavigator />
+				</GestureHandlerRootView>
+			</KeyboardAvoidingView>
+		</SafeAreaView>
 	);
 };
 
@@ -20,6 +26,9 @@ const styles = StyleSheet.create({
 	gestureViewStyle: {
 		flex: 1,
 	},
+	safeAreaViewStyle: {
+		flex: 1
+	}
 });
 
 export default AppEntry;
